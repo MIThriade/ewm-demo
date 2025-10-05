@@ -1,11 +1,28 @@
-
-import React from 'react'
+import React from "react";
 
 export default function Landing() {
   return (
     <div>
-      <style>{``}</style>
-      <div dangerouslySetInnerHTML={{ __html: `<!DOCTYPE html>
+      {/* OVERRIDES PENTRU MOBILE – PATCH RAPID */}
+      <style>{`
+        @media (max-width: 980px){
+          .hero{min-height:72vh;padding:40px 0}
+          .headline{font-size: clamp(24px, 6vw, 34px)}
+          .sub{font-size:14px;line-height:1.5}
+          .cta .btn{width:100%}
+          .container{padding:0 16px}
+          .grid.products{grid-template-columns:1fr !important}
+          .grid.benefits{grid-template-columns:1fr !important}
+          .showroom{grid-template-columns:repeat(6,1fr) !important}
+          .tile{grid-column:span 6 !important;height:220px}
+          .p-card .thumb{height:200px}
+        }
+      `}</style>
+
+      {/* HTML-UL LANDING-ULUI */}
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `<!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="utf-8" />
@@ -17,19 +34,11 @@ export default function Landing() {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --bg:#0b0e12; /* charcoal blue */
-      --ink:#e8ecf1; /* near white */
-      --muted:#9fb1c5;
-      --brand:#00d4ff; /* cyan */
-      --brand2:#8a5cff; /* violet */
-      --accent:#27e1a8; /* mint */
-      --danger:#ff6b6b;
-      --card:#0f141b;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
+      --bg:#0b0e12; --ink:#e8ecf1; --muted:#9fb1c5;
+      --brand:#00d4ff; --brand2:#8a5cff; --accent:#27e1a8; --danger:#ff6b6b;
+      --card:#0f141b; --shadow: 0 20px 60px rgba(0,0,0,.35); --radius: 18px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0}
+    *{box-sizing:border-box} html,body{margin:0}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 10% -10%, rgba(138,92,255,.15), rgba(0,0,0,0)), linear-gradient(180deg,#0b0e12 0%, #0b0e12 60%, #0b0e12 100%); color:var(--ink);}
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
@@ -41,6 +50,7 @@ export default function Landing() {
     .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#061018;font-weight:800;text-transform:uppercase;letter-spacing:.5px;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(0,212,255,.35);transition:transform .2s ease}
     .btn:hover{transform:translateY(-2px)}
     .btn-ghost{background:rgba(255,255,255,.06);color:var(--ink);box-shadow:none;border:1px solid rgba(255,255,255,.08)}
+
     /* HERO */
     .hero{position:relative;min-height:84vh;display:grid;place-items:center;overflow:hidden}
     .hero media{position:absolute;inset:0}
@@ -52,7 +62,8 @@ export default function Landing() {
     .headline strong{background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
     .sub{max-width:800px;margin:0 auto;color:#c9d4e1;opacity:.95}
     .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px}
-    /* BENEFITS */
+
+    /* SECTIONS */
     .section{padding:80px 0}
     .grid{display:grid;gap:18px}
     .benefits{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -60,6 +71,7 @@ export default function Landing() {
     .benefit{display:flex;gap:16px;align-items:flex-start}
     .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg, rgba(0,212,255,.12), rgba(138,92,255,.12));border:1px solid rgba(255,255,255,.08)}
     .benefit h4{margin:2px 0 6px 0}
+
     /* SHOWROOM */
     .showroom{grid-template-columns:repeat(12,1fr)}
     .tile{grid-column: span 4; height: 280px; border-radius: var(--radius); overflow:hidden; position:relative; background:#0a0f15;border:1px solid rgba(255,255,255,.06)}
@@ -67,6 +79,7 @@ export default function Landing() {
     .tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
     .tile:hover img{transform:scale(1.04)}
     .tile .tag{position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);font-size:12px}
+
     /* PRODUCT HIGHLIGHTS */
     .products{grid-template-columns: repeat(3, minmax(0,1fr))}
     .p-card{display:flex;flex-direction:column;gap:12px}
@@ -78,16 +91,19 @@ export default function Landing() {
     .p-card .thumb{height:220px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#0a0f15}
     .p-card .thumb img{width:100%;height:100%;object-fit:cover}
     .p-card button{margin-top:auto}
+
     /* SOCIAL PROOF */
     .reviews{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .review small{color:var(--muted)}
-    .stars{color:#f7c948}
+    .review small{color:var(--muted)} .stars{color:#f7c948}
+
     /* FAQ */
     details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px}
     summary{cursor:pointer;font-weight:600}
+
     /* FOOTER */
     .footer{padding:70px 0;color:#c0cddd;opacity:.9}
     .columns{display:grid;gap:18px;grid-template-columns:2fr 1fr 1fr}
+
     /* RESPONSIVE */
     @media (max-width: 980px){
       .benefits{grid-template-columns:1fr}
@@ -98,6 +114,7 @@ export default function Landing() {
       .tile.large{grid-column:span 6}
       .columns{grid-template-columns:1fr}
     }
+
     /* Tiny entrance animation */
     [data-reveal]{opacity:0;transform:translateY(14px);animation:reveal .8s ease forwards;}
     [data-reveal="2"]{animation-delay:.15s}
@@ -275,7 +292,7 @@ export default function Landing() {
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" href="#produse">Vezi pachetele</a>
-        <a class="btn btn-ghost" href="/">Configurator rapid</a>
+        <a class="btn btn-ghost" href="/configurator">Configurator rapid</a>
       </div>
     </div>
   </section>
@@ -284,8 +301,7 @@ export default function Landing() {
     <div class="container columns">
       <div>
         <div class="logo" style="margin-bottom:10px"><span class="logo-badge"></span><span>EWM Home</span></div>
-        <p>Design, acustică și lumină – într-un singur loc. Demo landing page (concept).
-        </p>
+        <p>Design, acustică și lumină – într-un singur loc. Demo landing page (concept).</p>
       </div>
       <div>
         <strong>Produse</strong>
@@ -309,8 +325,9 @@ export default function Landing() {
     </div>
   </footer>
 </body>
-</html>
-` }} />
+</html>`
+        }}
+      />
     </div>
-  )
+  );
 }
